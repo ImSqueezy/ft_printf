@@ -1,62 +1,69 @@
-#include <unistd.h>
-#include <stdio.h>
-#include <stdarg.h>
+#include "printf.h"
 
 void	ft_putchar(char c)
 {
 	write(1, &c, 1);
 }
 
-void	ft_c(char	c, va_list p2)
+static void	specifier_handle(size_t *count, char c, va_list p2)
 {
-	va_list x;
 	char	cha;
-	va_copy(x, p2);
-	if (c == '\n')
+
+	if (c == '\0')
 		return ;
 	else if (c == 'c')
 	{
-		cha = va_arg(x, int);
+		cha = va_arg(p2, int);
 		ft_putchar(cha);
+		*count++;
 	}
 }
 
 
-int	ft_printf(const char *a, ...)
+static int	count_elements(const char *ptr, va_list p)
 {
-	void	*ptr;
-	va_list p;
-	int		i;
-	int		count;
+	size_t	i;
+	size_t	count;
 
-	va_start(p, a);
-	i = 0;
 	count = 0;
-	while (a[i])
+	i = 0;
+	while (ptr[i])
 	{
-		if (a[i] != '%')
+		if (ptr[i] != '%')
 		{
-			write(1, &a[i], 1);
+			write(1, &ptr[i], 1);
 			count++;
 		}
 		else
 		{
 			i++;
-			if (a[i])
+			if (ptr[i])
 			{
-				ft_c(a[i], p);
-				i++;
+				specifier_handle(&count , ptr[i], p);
+				count++;
 			}
+
 		}
+		// printf("char: [%c] and i %d", *(ptr + i), i);
 		i++;
 	}
+	return (count);
+}
+
+int	ft_printf(const char *str, ...)
+{
+	size_t	count;
+	va_list p;
+
+	va_start(p, str);
+	count = count_elements(str, p);
 	va_end(p);
 	return (count);
 }
 
 int main(int ac, char **av)
 {
-	ft_printf("hello %c world\n", 'c');
-	printf("hello %c world\n", 'c');
+	printf("mine %d", ft_printf("hello %c%c%c%c", 'a', 'b', 'c', 'd'));
+	printf("real %d", printf("hello %c%c%c%c", 'a', 'b', 'c', 'd'));
 	return (0);
 }

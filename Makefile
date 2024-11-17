@@ -1,10 +1,12 @@
-OBJS = hello.o hello1.o str.o
+OBJS = hello.o ft_putchar.o
 FLAGS = -Wall -Wextra -Werror -c
 COMPILE = cc $(FLAGS)
+NAME = printf.a
 
-all: libftprintf.a printf.h
+all: $(NAME) printf.h
 
-libftprintf.a: $(OBJS)
+$(NAME): $(OBJS)
+
 %.o: %.c
 	$(COMPILE) $< -o $@
 	ar r libftprintf.a $@
@@ -13,8 +15,8 @@ clean:
 	rm -f $(OBJS)
 
 fclean: clean
-	rm -f libftprintf.a
+	rm -f $(NAME)
 
 re: fclean all
 
-.PHONY: clean re
+.PHONY: clean
