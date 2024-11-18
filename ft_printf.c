@@ -8,6 +8,8 @@ static void	specifier_handle(int *count, char c, va_list p2)
 		ft_putchar_count(count, va_arg(p2, int));
 	else if (c == 's')
 		ft_putstr_count(count, va_arg(p2, char *));
+	else if (c == 'd')
+		ft_putnbr_count(count, va_arg(p2, int));
 }
 
 
@@ -51,7 +53,7 @@ int	ft_printf(const char *str, ...)
 #include <string.h>
 int main()
 {
-	printf("length %zu\n", strlen("hello hello \nworld! a"));
-	ft_printf("hello %s %c\n", "hello world!", 'a');
+	printf("%d", printf("hello %s %c %d\n", "hello world!", 'a', 123));
+	printf("%d", ft_printf("hello %s %c %d\n", "hello world!", 'a', 123));
 	return (0);
 }
