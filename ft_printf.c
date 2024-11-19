@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aouaalla <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/11/19 22:51:19 by aouaalla          #+#    #+#             */
+/*   Updated: 2024/11/19 22:51:21 by aouaalla         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "printf.h"
 
 static void	specifier_handler(int *count, char c, va_list p2)
@@ -53,8 +65,8 @@ static int	count_elements(const char *ptr, va_list p)
 
 int	ft_printf(const char *str, ...)
 {
-	int 	count;
-	va_list p;
+	va_list	p;
+	int		count;
 
 	va_start(p, str);
 	count = count_elements(str, p);

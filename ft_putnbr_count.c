@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_putnbr_count.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aouaalla <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/11/19 22:53:47 by aouaalla          #+#    #+#             */
+/*   Updated: 2024/11/19 22:53:49 by aouaalla         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "printf.h"
 
 void	ft_putnbr_count(int	*i, int nbr)
@@ -21,5 +33,4 @@ void	ft_putnbr_count(int	*i, int nbr)
 		ft_putnbr_count(i, num / 10);
 		ft_putnbr_count(i, num % 10);
 	}
-
 }
