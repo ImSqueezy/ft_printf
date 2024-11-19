@@ -10,5 +10,6 @@ void	ft_putnbr_count(int	*i, int nbr);
 void	ft_putu_count(int *i, unsigned int u);
 void	ft_puthex_count(int *i, char c, unsigned int u);
 void	ft_putptr_count(int *i, void *p);
+int		ft_printf(const char *str, ...);
 
 #endif

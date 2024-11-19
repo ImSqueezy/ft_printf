@@ -1,5 +1,5 @@
-SRC = $(wildcard *.c)
-OBJS = $(SRC:.c=.o)
+OBJS = ft_putchar_count.o ft_puthex_count.o ft_putnbr_count.o ft_putptr_count.o \
+ft_putstr_count.o ft_putu_count.o ft_printf.o
 FLAGS = -Wall -Wextra -Werror -c
 COMPILE = cc $(FLAGS)
 NAME = libftprintf.a
