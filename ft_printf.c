@@ -16,15 +16,12 @@ static void	specifier_handler(int *count, char c, va_list p2)
 		ft_puthex_count(count, c, va_arg(p2, unsigned int));
 	else if (c == 'p')
 	{
-		if (va_arg(p2, void *) == NULL)
-		{
-			ft_putstr_count(count, "(nil)");
-			return ;
-		}
 		ft_putchar_count(count, '0');
 		ft_putchar_count(count, 'x');
 		ft_putptr_count(count, va_arg(p2, void *));
 	}
+	else
+		ft_putchar_count(count, c);
 }
 
 static int	count_elements(const char *ptr, va_list p)
@@ -46,8 +43,8 @@ static int	count_elements(const char *ptr, va_list p)
 			i++;
 			if (ptr[i])
 				specifier_handler(&count, ptr[i], p);
-			else if (ptr[i] == '\0')
-				return (-1);
+			if (ptr[i] == '\0')
+				break ;
 		}
 		i++;
 	}
