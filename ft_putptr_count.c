@@ -1,31 +1,19 @@
 #include "printf.h"
 
-void print_memory(const void *addr, size_t size)
+void	ft_putptr_count(int *i, void *p)
 {
-    size_t printed = 0;
-    size_t i;
-    const unsigned char* pc = addr;
-    for (i=0; i<size; ++i)
-    {
-        int  g;
-        g = (*(pc+i) >> 4) & 0xf;
-        g += g >= 10 ? 'a'-10 : '0';
-        putchar(g);
-        printed++;
+	unsigned long	address;
+	char			*hex_order = "0123456789abcdef";
 
-        g = *(pc+i) & 0xf;
-        g += g >= 10 ? 'a'-10 : '0';
-        putchar(g);
-        printed++;
-        if (printed % 32 == 0) putchar('\n');
-        else if (printed % 4 == 0) putchar(' ');
-    }
-}
-
-int main(void)
-{
-	int tab[10] = {0, 23, 150, 255, 12, 16, 21, 42};
-
-	print_memory(tab, sizeof(tab)); return (0);
-    return 0;
+	address = (unsigned long)p;
+	if (!address)
+		ft_putchar_count(i, '0');
+	else if (address < 16)
+		ft_putchar_count(i, hex_order[address]);
+	else
+	{
+		
+		ft_putptr_count(i, (void *)(address / 16));
+		ft_putchar_count(i, hex_order[address % 16]);
+	}
 }
