@@ -3,9 +3,6 @@
 
 # include <stdarg.h>
 # include <unistd.h>
-# include <limits.h>
-# include "Libft/libft.h"
-# include <stdio.h> // temporarly
 
 void	ft_putchar_count(int *i, char c);
 void	ft_putstr_count(int	*i, char *s);
