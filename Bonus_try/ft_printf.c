@@ -6,7 +6,7 @@
 /*   By: sqz <sqz@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 22:51:19 by aouaalla          #+#    #+#             */
-/*   Updated: 2024/11/20 22:47:18 by sqz              ###   ########.fr       */
+/*   Updated: 2024/11/21 12:40:10 by sqz              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,6 @@ int	ft_printf(const char *str, ...)
 	while (str[i])
 	{
 		if (str[i] != '%')
-
 			ft_putchar_count(&count, str[i]);
 		else
 		{
