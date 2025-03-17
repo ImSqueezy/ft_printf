@@ -1,36 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_count.c                                  :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aouaalla <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/19 22:53:47 by aouaalla          #+#    #+#             */
-/*   Updated: 2024/11/19 22:53:49 by aouaalla         ###   ########.fr       */
+/*   Created: 2024/11/19 22:54:51 by aouaalla          #+#    #+#             */
+/*   Updated: 2025/03/17 15:21:12 by aouaalla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 
-void	ft_putnbr_count(int	*i, int nbr)
-{
-	char		a;
-	long long	num;
+# include <stdarg.h>
+# include <unistd.h>
 
-	num = nbr;
-	if (num < 0)
-	{
-		ft_putchar_count(i, '-');
-		num *= -1;
-	}
-	if (num >= 0 && num <= 9)
-	{
-		a = num + 48;
-		ft_putchar_count(i, a);
-	}
-	else
-	{
-		ft_putnbr_count(i, num / 10);
-		ft_putnbr_count(i, num % 10);
-	}
-}
+void	ft_putchar_count(int *i, char c);
+void	ft_putstr_count(int	*i, char *s);
+void	ft_putnbr_count(int	*i, int nbr);
+void	ft_putu_count(int *i, unsigned int u);
+void	ft_puthex_count(int *i, char c, unsigned int u);
+void	ft_putptr_count(int *i, void *p);
+int		ft_printf(const char *str, ...);
+
+#endif

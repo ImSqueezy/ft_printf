@@ -1,6 +1,6 @@
-OBJS = ft_putchar_count.o ft_puthex_count.o ft_putnbr_count.o ft_putptr_count.o \
-ft_putstr_count.o ft_putu_count.o ft_printf.o
-FLAGS = -Wall -Wextra -Werror -c
+OBJS = ft_printf.o putchar_count.o puthex_count.o putnbr_count.o \
+	putstr_count.o putu_count.o putptr_count.o
+FLAGS = -Wall -Wextra -Werror
 COMPILE = cc $(FLAGS)
 NAME = libftprintf.a
 
@@ -9,8 +9,8 @@ all: $(NAME)
 $(NAME): $(OBJS) 
 	ar rs $(NAME) $(OBJS)
 
-%.o: %.c printf.h
-	$(COMPILE) $<
+%.o: %.c ft_printf.h
+	$(COMPILE) -c $<
 
 clean: 
 	rm -f $(OBJS)
